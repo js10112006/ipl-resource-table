@@ -16,7 +16,7 @@ DLS_2026/
 ├── requirements.txt    # Python dependencies
 └── README.md           # Project documentation
 
-## ⚙️ Methodology
+**## ⚙️ Methodology**
 1. Data Ingestion & Event Extraction (ipl_csv2/ & final_csv/):Raw ball-by-ball IPL delivery logs are parsed into discrete match-state coordinates $(u, w)$, where $u \in [0.0, 20.0]$ represents remaining overs and $w \in [0, 9]$ represents lost wickets.
 2. Empirical Matrix Aggregation:
 Average remaining runs are computed for every valid $(u, w)$ state across historical IPL innings to build an initial raw resource grid.
@@ -24,7 +24,7 @@ Average remaining runs are computed for every valid $(u, w)$ state across histor
 4. Resource Matrix Normalization (resource tables/):Trajectories are normalized against the full-resource baseline ($20.0$ overs, $0$ wickets = $100\%$) to generate calibrated lookup tables tailored to IPL scoring dynamics.
 
 
-🚀 How to Run
+**🚀 How to Run**
 
 1. PrerequisitesEnsure Python 3.8+ is installed, then install dependencies:
 pip install -r requirements.txt
