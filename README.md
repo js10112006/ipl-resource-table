@@ -16,35 +16,49 @@ DLS_2026/
 ├── requirements.txt    # Python dependencies
 └── README.md           # Project documentation
 
-**## ⚙️ Methodology**
-1. Data Ingestion & Event Extraction (ipl_csv2/ & final_csv/):Raw ball-by-ball IPL delivery logs are parsed into discrete match-state coordinates $(u, w)$, where $u \in [0.0, 20.0]$ represents remaining overs and $w \in [0, 9]$ represents lost wickets.
-2. Empirical Matrix Aggregation:
-Average remaining runs are computed for every valid $(u, w)$ state across historical IPL innings to build an initial raw resource grid.
-3. Non-Linear Parameter Calibration (codes/):To resolve data sparsity in rare match states (e.g., late overs with high wicket loss), we fit a non-linear exponential decay function $R(u, w) = Z_0(w) \cdot \left(1 - e^{-b(w) \cdot u}\right)$ using Levenberg-Marquardt least-squares optimization.
-4. Resource Matrix Normalization (resource tables/):Trajectories are normalized against the full-resource baseline ($20.0$ overs, $0$ wickets = $100\%$) to generate calibrated lookup tables tailored to IPL scoring dynamics.
+---
 
+## ⚙️ Methodology
 
-**🚀 How to Run**
+1. **Data Ingestion & Event Extraction (`ipl_csv2/` & `final_csv/`):**  
+   Raw ball-by-ball IPL delivery logs are parsed into discrete match-state coordinates $(u, w)$, where $u \in [0.0, 20.0]$ represents remaining overs and $w \in [0, 9]$ represents lost wickets.
 
-1. PrerequisitesEnsure Python 3.8+ is installed, then install dependencies:
+2. **Empirical Matrix Aggregation:**  
+   Average remaining runs are computed for every valid $(u, w)$ state across historical IPL innings to build an initial raw resource grid.
+
+3. **Non-Linear Parameter Calibration (`codes/`):**  
+   To resolve data sparsity in rare match states (e.g., late overs with high wicket loss), we fit a non-linear exponential decay function $R(u, w) = Z_0(w) \cdot \left(1 - e^{-b(w) \cdot u}\right)$ using Levenberg-Marquardt least-squares optimization.
+
+4. **Resource Matrix Normalization (`resource tables/`):**  
+   Trajectories are normalized against the full-resource baseline ($20.0$ overs, $0$ wickets = $100\%$) to generate calibrated lookup tables tailored to IPL scoring dynamics.
+
+---
+
+## 🚀 How to Run
+
+### 1. Prerequisites
+Ensure Python 3.8+ is installed, then install dependencies:
 pip install -r requirements.txt
-2. Execute PipelineRun the calibration and table generation scripts inside the codes/ directory:
+### 2. Execute Pipeline
+Run the calibration and table generation scripts inside the `codes/` directory:
 cd codes
 python exponential.py
 
-Output charts and optimized resource CSVs will auto-populate in charts/ and resource tables/.
+Output charts and optimized resource CSVs will auto-populate in `charts/` and `resource tables/`.
 
+---
 
 ## 📜 Citation & References
+
 If you cite or adapt this model in your research, please use the following references:
 
-Duckworth, F. C., & Lewis, A. J. (1998). A fair method of resetting targets in interrupted two-innings matches. Journal of the Operational Research Society, 49(2), 116–127.
+* **Duckworth, F. C., & Lewis, A. J. (1998).** *A fair method of resetting targets in interrupted two-innings matches.* Journal of the Operational Research Society, 49(2), 116–127.
+* **Stern, S. E. (2016).** *An overview of the Duckworth-Lewis-Stern method for target resetting in interrupted limited-overs cricket matches.* Journal of Sports Analytics, 2(1), 3–16.
+* **Cricsheet (2026).** *Ball-by-ball IPL dataset logs.* Available at: https://cricsheet.org/
 
-Stern, S. E. (2016). An overview of the Duckworth-Lewis-Stern method for target resetting in interrupted limited-overs cricket matches. Journal of Sports Analytics, 2(1), 3–16.
-
-Cricsheet (2026). Ball-by-ball IPL dataset logs. Available at: https://cricsheet.org/
+---
 
 ## 👥 Authors
-Juyee Shirkhedkar – Independent Researcher – juyee1010@gmail.com
 
-Sandeep Shirkhedkar – Independent Researcher – shirkhedkar@yahoo.com
+* **Juyee Shirkhedkar** – *Independent Researcher* – [juyee1010@gmail.com](mailto:juyee1010@gmail.com)
+* **Sandeep Shirkhedkar** – *Independent Researcher* – [shirkhedkar@yahoo.com](mailto:shirkhedkar@yahoo.com)
