@@ -1,6 +1,6 @@
 # IPL-Specific Resource Table for Target Resetting in T20 Cricket
 
-An empirical and model-calibrated resource allocation framework designed for high-scoring limited-overs cricket formats. This repository contains the data processing pipelines, non-linear optimization routines, and generated $20 \times 10$ resource percentage lookup tables specifically calibrated on Indian Premier League (IPL) delivery datasets.
+An empirical and model-calibrated resource allocation framework designed for high-scoring limited-overs cricket formats. This repository contains the data processing pipelines, non-linear optimization routines, and generated 20x10 resource percentage lookup tables specifically calibrated on Indian Premier League (IPL) delivery datasets.
 
 ---
 
